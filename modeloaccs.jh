@@ -1,0 +1,63 @@
+
+
+entity Usuario {
+	nome String,
+    login String,
+    senha String,
+    dataCadastro ZonedDateTime,
+    ultimoLogin ZonedDateTime,
+    perfil Perfil
+}
+
+enum Perfil {
+    ADMIN, ALUNO, PROFESSOR
+}
+
+entity Curso {
+	nome String,
+    sigla String
+}
+
+entity TurmaACC {
+	nome String,
+    pontuacao Integer,
+    inicio LocalDate,
+    prazoEnvio LocalDate
+}
+
+entity TipoCertificado{
+	nome String
+}
+
+enum TipoCertificado{
+	LOCAL, REGIONAL, NACIONAL, INTERNACIONAL
+}
+
+enum StatusCertificado {
+ REJEITADO, PENDENTE, APROVADO, APROVADO_PARCIALMENTE
+}
+
+entity Certificado {
+	titulo String,
+    descricao String,
+	dataEnvio ZonedDateTime,
+    motivoPendente String,
+    motivoRejeitado String,
+    motivoParcial String,
+    tipo TipoCertificado,
+    chPedida Integer,
+    chConcedida Integer,
+    estado StatusCertificado,
+    caminhoArquivo String
+}
+
+relationship ManyToMany{
+	Curso{turmasAcc(nome)} to TurmaACC{cursos(nome)}
+}
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Usuario{curso} to Curso{alunos},
+    Certificado{aluno(nome)} to Usuario{certificados(nome)},
+    Certificado{turma(nome)} to TurmaACC{certificados(nome)},
+    TurmaACC{responsavel(nome)} to Usuario{turmasResponsavel(nome)}
+}

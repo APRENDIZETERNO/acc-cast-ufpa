@@ -1,0 +1,39 @@
+{
+    "name": "Curso",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sigla",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "turmaACC",
+            "otherEntityRelationshipName": "cursos",
+            "relationshipName": "turmasAcc",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "usuario",
+            "otherEntityRelationshipName": "curso",
+            "relationshipName": "alunos",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190918160045",
+    "entityTableName": "curso",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,61 @@
+{
+    "name": "Usuario",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "login",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "senha",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataCadastro",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "ultimoLogin",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "perfil",
+            "fieldType": "Perfil",
+            "fieldValues": "ADMIN,ALUNO,PROFESSOR"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "curso",
+            "otherEntityRelationshipName": "alunos",
+            "relationshipName": "curso"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "certificado",
+            "otherEntityRelationshipName": "aluno",
+            "relationshipName": "certificados",
+            "otherEntityField": "nome"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "turmaACC",
+            "otherEntityRelationshipName": "responsavel",
+            "relationshipName": "turmasResponsavel",
+            "otherEntityField": "nome"
+        }
+    ],
+    "changelogDate": "20190918160044",
+    "entityTableName": "usuario",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

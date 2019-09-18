@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-usuario-heading">Create or edit a Usuario</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_login">Login</label>
+                    <input type="text" class="form-control" name="login" id="field_login"
+                           formControlName="login"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_senha">Senha</label>
+                    <input type="text" class="form-control" name="senha" id="field_senha"
+                           formControlName="senha"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dataCadastro">Data Cadastro</label>
+                    <div class="d-flex">
+                        <input id="field_dataCadastro" type="datetime-local" class="form-control" name="dataCadastro" formControlName="dataCadastro" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ultimoLogin">Ultimo Login</label>
+                    <div class="d-flex">
+                        <input id="field_ultimoLogin" type="datetime-local" class="form-control" name="ultimoLogin" formControlName="ultimoLogin" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_perfil">Perfil</label>
+                    <select class="form-control" name="perfil" formControlName="perfil" id="field_perfil">
+                        <option value="ADMIN">ADMIN</option>
+                        <option value="ALUNO">ALUNO</option>
+                        <option value="PROFESSOR">PROFESSOR</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_certificados">Certificados</label>
+                    <select class="form-control" id="field_certificados" name="certificados" formControlName="certificados">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="certificadoOption.id === editForm.get('certificados').value?.id ? editForm.get('certificados').value : certificadoOption" *ngFor="let certificadoOption of certificados; trackBy: trackCertificadoById">{{certificadoOption.nome}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_turmasResponsavel">Turmas Responsavel</label>
+                    <select class="form-control" id="field_turmasResponsavel" name="turmasResponsavel" formControlName="turmasResponsavel">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="turmaACCOption.id === editForm.get('turmasResponsavel').value?.id ? editForm.get('turmasResponsavel').value : turmaACCOption" *ngFor="let turmaACCOption of turmaaccs; trackBy: trackTurmaACCById">{{turmaACCOption.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

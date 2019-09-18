@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="certificado">
+            <h2><span>Certificado</span> {{certificado.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Titulo</span></dt>
+                <dd>
+                    <span>{{certificado.titulo}}</span>
+                </dd>
+                <dt><span>Descricao</span></dt>
+                <dd>
+                    <span>{{certificado.descricao}}</span>
+                </dd>
+                <dt><span>Data Envio</span></dt>
+                <dd>
+                    <span>{{certificado.dataEnvio}}</span>
+                </dd>
+                <dt><span>Motivo Pendente</span></dt>
+                <dd>
+                    <span>{{certificado.motivoPendente}}</span>
+                </dd>
+                <dt><span>Motivo Rejeitado</span></dt>
+                <dd>
+                    <span>{{certificado.motivoRejeitado}}</span>
+                </dd>
+                <dt><span>Motivo Parcial</span></dt>
+                <dd>
+                    <span>{{certificado.motivoParcial}}</span>
+                </dd>
+                <dt><span>Tipo</span></dt>
+                <dd>
+                    <span>{{certificado.tipo}}</span>
+                </dd>
+                <dt><span>Ch Pedida</span></dt>
+                <dd>
+                    <span>{{certificado.chPedida}}</span>
+                </dd>
+                <dt><span>Ch Concedida</span></dt>
+                <dd>
+                    <span>{{certificado.chConcedida}}</span>
+                </dd>
+                <dt><span>Estado</span></dt>
+                <dd>
+                    <span>{{certificado.estado}}</span>
+                </dd>
+                <dt><span>Caminho Arquivo</span></dt>
+                <dd>
+                    <span>{{certificado.caminhoArquivo}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/certificado', certificado.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span>Certificados</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-certificado" [routerLink]="['/certificado/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Certificado
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="certificados?.length === 0">
+        <span>No certificados found</span>
+    </div>
+    <div class="table-responsive" *ngIf="certificados?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Titulo</span></th>
+            <th><span>Descricao</span></th>
+            <th><span>Data Envio</span></th>
+            <th><span>Motivo Pendente</span></th>
+            <th><span>Motivo Rejeitado</span></th>
+            <th><span>Motivo Parcial</span></th>
+            <th><span>Tipo</span></th>
+            <th><span>Ch Pedida</span></th>
+            <th><span>Ch Concedida</span></th>
+            <th><span>Estado</span></th>
+            <th><span>Caminho Arquivo</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let certificado of certificados ;trackBy: trackId">
+                <td><a [routerLink]="['/certificado', certificado.id, 'view' ]">{{certificado.id}}</a></td>
+                <td>{{certificado.titulo}}</td>
+                <td>{{certificado.descricao}}</td>
+                <td>{{certificado.dataEnvio | date:'medium'}}</td>
+                <td>{{certificado.motivoPendente}}</td>
+                <td>{{certificado.motivoRejeitado}}</td>
+                <td>{{certificado.motivoParcial}}</td>
+                <td>{{certificado.tipo}}</td>
+                <td>{{certificado.chPedida}}</td>
+                <td>{{certificado.chConcedida}}</td>
+                <td>{{certificado.estado}}</td>
+                <td>{{certificado.caminhoArquivo}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/certificado', certificado.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/certificado', certificado.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/certificado', { outlets: { popup: certificado.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

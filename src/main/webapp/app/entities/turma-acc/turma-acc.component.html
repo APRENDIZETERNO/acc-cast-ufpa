@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span>Turma ACCS</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-turma-acc" [routerLink]="['/turma-acc/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Turma ACC
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="turmaACCS?.length === 0">
+        <span>No turmaACCS found</span>
+    </div>
+    <div class="table-responsive" *ngIf="turmaACCS?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nome</span></th>
+            <th><span>Pontuacao</span></th>
+            <th><span>Inicio</span></th>
+            <th><span>Prazo Envio</span></th>
+            <th><span>Certificados</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let turmaACC of turmaACCS ;trackBy: trackId">
+                <td><a [routerLink]="['/turma-acc', turmaACC.id, 'view' ]">{{turmaACC.id}}</a></td>
+                <td>{{turmaACC.nome}}</td>
+                <td>{{turmaACC.pontuacao}}</td>
+                <td>{{turmaACC.inicio | date:'mediumDate'}}</td>
+                <td>{{turmaACC.prazoEnvio | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="turmaACC.certificados">
+                        <a [routerLink]="['/certificado', turmaACC.certificados?.id, 'view' ]" >{{turmaACC.certificados?.nome}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/turma-acc', turmaACC.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/turma-acc', turmaACC.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/turma-acc', { outlets: { popup: turmaACC.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

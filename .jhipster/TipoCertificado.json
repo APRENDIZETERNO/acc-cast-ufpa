@@ -1,0 +1,19 @@
+{
+    "name": "TipoCertificado",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190918160047",
+    "entityTableName": "tipo_certificado",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

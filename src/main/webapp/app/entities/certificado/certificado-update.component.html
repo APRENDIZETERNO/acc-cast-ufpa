@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-certificado-heading">Create or edit a Certificado</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_titulo">Titulo</label>
+                    <input type="text" class="form-control" name="titulo" id="field_titulo"
+                           formControlName="titulo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descricao">Descricao</label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                           formControlName="descricao"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dataEnvio">Data Envio</label>
+                    <div class="d-flex">
+                        <input id="field_dataEnvio" type="datetime-local" class="form-control" name="dataEnvio" formControlName="dataEnvio" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_motivoPendente">Motivo Pendente</label>
+                    <input type="text" class="form-control" name="motivoPendente" id="field_motivoPendente"
+                           formControlName="motivoPendente"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_motivoRejeitado">Motivo Rejeitado</label>
+                    <input type="text" class="form-control" name="motivoRejeitado" id="field_motivoRejeitado"
+                           formControlName="motivoRejeitado"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_motivoParcial">Motivo Parcial</label>
+                    <input type="text" class="form-control" name="motivoParcial" id="field_motivoParcial"
+                           formControlName="motivoParcial"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipo">Tipo</label>
+                    <select class="form-control" name="tipo" formControlName="tipo" id="field_tipo">
+                        <option value="LOCAL">LOCAL</option>
+                        <option value="REGIONAL">REGIONAL</option>
+                        <option value="NACIONAL">NACIONAL</option>
+                        <option value="INTERNACIONAL">INTERNACIONAL</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_chPedida">Ch Pedida</label>
+                    <input type="number" class="form-control" name="chPedida" id="field_chPedida"
+                           formControlName="chPedida"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_chConcedida">Ch Concedida</label>
+                    <input type="number" class="form-control" name="chConcedida" id="field_chConcedida"
+                           formControlName="chConcedida"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estado">Estado</label>
+                    <select class="form-control" name="estado" formControlName="estado" id="field_estado">
+                        <option value="REJEITADO">REJEITADO</option>
+                        <option value="PENDENTE">PENDENTE</option>
+                        <option value="APROVADO">APROVADO</option>
+                        <option value="APROVADO_PARCIALMENTE">APROVADO_PARCIALMENTE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_caminhoArquivo">Caminho Arquivo</label>
+                    <input type="text" class="form-control" name="caminhoArquivo" id="field_caminhoArquivo"
+                           formControlName="caminhoArquivo"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

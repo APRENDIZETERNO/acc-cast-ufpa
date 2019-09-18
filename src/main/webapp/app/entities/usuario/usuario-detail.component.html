@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="usuario">
+            <h2><span>Usuario</span> {{usuario.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nome</span></dt>
+                <dd>
+                    <span>{{usuario.nome}}</span>
+                </dd>
+                <dt><span>Login</span></dt>
+                <dd>
+                    <span>{{usuario.login}}</span>
+                </dd>
+                <dt><span>Senha</span></dt>
+                <dd>
+                    <span>{{usuario.senha}}</span>
+                </dd>
+                <dt><span>Data Cadastro</span></dt>
+                <dd>
+                    <span>{{usuario.dataCadastro}}</span>
+                </dd>
+                <dt><span>Ultimo Login</span></dt>
+                <dd>
+                    <span>{{usuario.ultimoLogin}}</span>
+                </dd>
+                <dt><span>Perfil</span></dt>
+                <dd>
+                    <span>{{usuario.perfil}}</span>
+                </dd>
+                <dt><span>Certificados</span></dt>
+                <dd>
+                    <div *ngIf="usuario.certificados">
+                        <a [routerLink]="['/certificado', usuario.certificados?.id, 'view']">{{usuario.certificados?.nome}}</a>
+                    </div>
+                </dd>
+                <dt><span>Turmas Responsavel</span></dt>
+                <dd>
+                    <div *ngIf="usuario.turmasResponsavel">
+                        <a [routerLink]="['/turma-acc', usuario.turmasResponsavel?.id, 'view']">{{usuario.turmasResponsavel?.nome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/usuario', usuario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

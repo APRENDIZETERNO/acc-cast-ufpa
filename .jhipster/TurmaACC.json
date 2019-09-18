@@ -1,0 +1,53 @@
+{
+    "name": "TurmaACC",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pontuacao",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "inicio",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "prazoEnvio",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "usuario",
+            "otherEntityRelationshipName": "turmasResponsavel",
+            "relationshipName": "responsavel"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "certificado",
+            "otherEntityRelationshipName": "turma",
+            "relationshipName": "certificados",
+            "otherEntityField": "nome"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "curso",
+            "otherEntityRelationshipName": "turmasAcc",
+            "relationshipName": "cursos",
+            "otherEntityField": "nome",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20190918160046",
+    "entityTableName": "turma_acc",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

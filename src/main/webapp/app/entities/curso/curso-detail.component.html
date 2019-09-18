@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="curso">
+            <h2><span>Curso</span> {{curso.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nome</span></dt>
+                <dd>
+                    <span>{{curso.nome}}</span>
+                </dd>
+                <dt><span>Sigla</span></dt>
+                <dd>
+                    <span>{{curso.sigla}}</span>
+                </dd>
+                <dt><span>Turmas Acc</span></dt>
+                <dd>
+                    <span *ngFor="let turmasAcc of curso.turmasAccs; let last = last">
+                        <a [routerLink]="['/turma-acc', turmasAcc?.id, 'view' ]">{{turmasAcc.nome}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Alunos</span></dt>
+                <dd>
+                    <div *ngIf="curso.alunos">
+                        <a [routerLink]="['/usuario', curso.alunos?.id, 'view']">{{curso.alunos?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/curso', curso.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

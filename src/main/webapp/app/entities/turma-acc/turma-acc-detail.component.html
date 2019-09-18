@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="turmaACC">
+            <h2><span>Turma ACC</span> {{turmaACC.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nome</span></dt>
+                <dd>
+                    <span>{{turmaACC.nome}}</span>
+                </dd>
+                <dt><span>Pontuacao</span></dt>
+                <dd>
+                    <span>{{turmaACC.pontuacao}}</span>
+                </dd>
+                <dt><span>Inicio</span></dt>
+                <dd>
+                    <span>{{turmaACC.inicio}}</span>
+                </dd>
+                <dt><span>Prazo Envio</span></dt>
+                <dd>
+                    <span>{{turmaACC.prazoEnvio}}</span>
+                </dd>
+                <dt><span>Certificados</span></dt>
+                <dd>
+                    <div *ngIf="turmaACC.certificados">
+                        <a [routerLink]="['/certificado', turmaACC.certificados?.id, 'view']">{{turmaACC.certificados?.nome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/turma-acc', turmaACC.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+{
+    "name": "Certificado",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descricao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataEnvio",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "motivoPendente",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "motivoRejeitado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "motivoParcial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipo",
+            "fieldType": "TipoCertificado",
+            "fieldValues": "LOCAL,REGIONAL,NACIONAL,INTERNACIONAL"
+        },
+        {
+            "fieldName": "chPedida",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "chConcedida",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "StatusCertificado",
+            "fieldValues": "REJEITADO,PENDENTE,APROVADO,APROVADO_PARCIALMENTE"
+        },
+        {
+            "fieldName": "caminhoArquivo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "usuario",
+            "otherEntityRelationshipName": "certificados",
+            "relationshipName": "aluno"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "turmaACC",
+            "otherEntityRelationshipName": "certificados",
+            "relationshipName": "turma"
+        }
+    ],
+    "changelogDate": "20190918160048",
+    "entityTableName": "certificado",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
